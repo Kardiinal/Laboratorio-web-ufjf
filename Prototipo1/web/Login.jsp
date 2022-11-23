@@ -11,6 +11,7 @@
     Object objMsg = session.getAttribute("msg");
     String msg = "";
     
+    
     if(objMsg != null){
         msg = (String) objMsg;
         String a = "a";
