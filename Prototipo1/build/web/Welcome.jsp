@@ -3,6 +3,7 @@
     Created on : 17 de nov de 2022, 22:25:41
     Author     : ice
 --%>
+
 <%  
     
     Object objLogado = session.getAttribute("logado");
@@ -19,6 +20,7 @@
     
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>

@@ -93,29 +93,42 @@ public class Control extends HttpServlet {
                 case "sair":
                     session.setAttribute("msg", "Deslogado com sucesso!");
                     session.setAttribute("logado", false);
-                    request.getRequestDispatcher("Login.jsp").forward(request, response);
+                    deslogar(request,response);
+                    //request.getRequestDispatcher("Login.jsp").forward(request, response);
                     break;
                 case "logar":
-                    request.getRequestDispatcher("Menu.jsp").forward(request, response);
+                    response.sendRedirect("Menu.jsp");
+                    //request.getRequestDispatcher("Menu.jsp").forward(request, response);
                     break;
                 case "menu":
-                    request.getRequestDispatcher("Menu.jsp").forward(request, response);
+                    response.sendRedirect("Menu.jsp");
+                    //request.getRequestDispatcher("Menu.jsp").forward(request, response);
                     break;
                 case "welcome":
                     request.getRequestDispatcher("Welcome.jsp").forward(request, response);                  
                     break;
                 default:
-                    
-                    request.getRequestDispatcher("Login.jsp").forward(request, response);    
+                    session.setAttribute("logado", false);
+                    deslogar(request,response);
+                    //request.getRequestDispatcher("Login.jsp").forward(request, response);    
                     break;
             }
         }else{
-            request.getRequestDispatcher("Login.jsp").forward(request, response);
+            session.setAttribute("logado", false);
+            deslogar(request,response);
+            //request.getRequestDispatcher("Login.jsp").forward(request, response);
         }
         
-        //request.getRequestDispatcher("Menu.jsp").forward(request, response);                   
+        
+        
+        
     }
-
+    
+    void deslogar(HttpServletRequest request, HttpServletResponse response)
+    throws ServletException, IOException{
+        request.getRequestDispatcher("Login.jsp").forward(request, response);
+    }
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
