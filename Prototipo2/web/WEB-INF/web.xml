@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <filter>
+        <filter-name>FiltroGeral</filter-name>
+        <filter-class>Servlets.FiltroGeral</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>FiltroGeral</filter-name>
+        <url-pattern>/Menu.jsp</url-pattern>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+    <listener>
+        <description>ServletContextListener</description>
+        <listener-class>Auxiliar.SessionCounter</listener-class>
+    </listener>
+    <servlet>
+        <servlet-name>Control</servlet-name>
+        <servlet-class>Servlet.Control</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Control</servlet-name>
+        <url-pattern>/Control</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            1
+        </session-timeout>
+    </session-config>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/erro.html</location>
+    </error-page>
+    <error-page>
+        <exception-type>javax.servlet.ServletException</exception-type>
+        <location>/erro_1.html</location>
+    </error-page>
+</web-app>
