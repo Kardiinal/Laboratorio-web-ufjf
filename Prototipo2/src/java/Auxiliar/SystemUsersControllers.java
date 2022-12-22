@@ -28,4 +28,26 @@ public class SystemUsersControllers {
         emf.close();
         return usersNames;
     }
+    
+    public static boolean validateLogin(String username,String password){
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("Prototipo2PU");
+        SystemusersJpaController systemUsersJpa = new SystemusersJpaController(null, emf);
+        List<Systemusers> sysUsers = systemUsersJpa.findSystemusersEntities();
+        boolean loginValido = false;
+        for(Systemusers sysUser: sysUsers){
+            
+            String bdUsername = sysUser.getUsername().toLowerCase();
+            String bdPassword = sysUser.getPassword().toLowerCase();
+            String loginUsername = username.toLowerCase();
+            String loginPassword = password.toLowerCase();
+            
+
+            if(bdUsername.equals(loginUsername) && bdPassword.equals(loginPassword)){
+                loginValido = true;
+            }
+            
+        }
+        emf.close();
+        return loginValido;
+    }
 }
